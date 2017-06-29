@@ -2,7 +2,6 @@
  * Déclaration de variables avec let
  * @type {number}
  */
-
 let i = 0;
 
 if(1 == 1) {
@@ -13,3 +12,11 @@ if(1 == 1) {
 
 console.log(i);
 // console.log(a) // => Produit une erreur
+
+/**
+ * Déclation de constantes
+ */
+const NAME = 'Bibi';
+
+// NAME = "Bobo";  // => Produit une erreur
+console.log(NAME);
