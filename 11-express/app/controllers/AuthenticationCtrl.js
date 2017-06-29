@@ -1,4 +1,6 @@
-class AuthenticationCtrl {
+const Controller = require('./Controller');
+
+class AuthenticationCtrl extends Controller {
     registration(req, res) { }
 
     login(req, res) {

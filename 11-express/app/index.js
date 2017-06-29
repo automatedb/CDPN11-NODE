@@ -7,6 +7,10 @@ const ArgumentParser = require('argparse').ArgumentParser;
 const IndexCtrl = require('./controllers/IndexCtrl');
 const AuthenticationCtrl = require('./controllers/AuthenticationCtrl');
 
+const config = {
+   defaultName: 'Bibi'
+};
+
 const parser = new ArgumentParser({
     version: '0.0.1',
     addHelp: true,
@@ -31,11 +35,11 @@ app.use(bodyParser.json());
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/../views'));
 
-const authentication = new AuthenticationCtrl();
-app.get('/login', authentication.login);
-app.post('/login', authentication.postLogin);
+const authenticationCtrl = new AuthenticationCtrl(config);
+app.get('/login', authenticationCtrl.login.bind(authenticationCtrl));
+app.post('/login', authenticationCtrl.postLogin.bind(authenticationCtrl));
 
-const indexCtrl = new IndexCtrl();
-app.get('/:param?', indexCtrl.index);
+const indexCtrl = new IndexCtrl(config);
+app.get('/:param?', indexCtrl.index.bind(indexCtrl));
 
 app.listen(args.port, () => console.log(`Example app listening on port ${args.port}!`));
